@@ -41,7 +41,11 @@ jobs:
         with:
           report_paths: '**/build/test-results/test/TEST-*.xml'
 
-      - uses: madrapps/jacoco-report@v1.6.1
+#      - uses: madrapps/jacoco-report@v1.6.1
+#        with:
+#          paths: ${{ github.workspace }}/**/build/reports/jacoco/test/*.xml
+#          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: PavanMudigonda/jacoco-reporter@v4.9
         with:
-          paths: ${{ github.workspace }}/**/build/reports/jacoco/test/*.xml
-          token: ${{ secrets.GITHUB_TOKEN }}
+          coverage_results_path: "**/build/reports/jacoco/test/*.xml"
