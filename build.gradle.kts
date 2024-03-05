@@ -5,6 +5,7 @@ plugins {
     id("com.diffplug.spotless") version "6.25.0"
     id("org.springframework.boot") version "3.2.3"
     id("io.spring.dependency-management") version "1.1.4"
+    id("name.remal.sonarlint") version "3.4.9"
     kotlin("jvm") version "1.9.22"
     kotlin("plugin.spring") version "1.9.22"
     kotlin("plugin.jpa") version "1.9.22"
@@ -35,7 +36,7 @@ dependencies {
     runtimeOnly("com.h2database:h2")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.2.1")
-    testImplementation(
+    implementation(
         "org.apache.logging.log4j:log4j-core",
     ) { version { strictly("2.14.1") } } // Vulnerability to trigger dependency review
 }
