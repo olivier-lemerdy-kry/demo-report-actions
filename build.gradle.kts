@@ -36,7 +36,7 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.2.1")
     testImplementation(
-        "org.apache.logging.log4j:log4j-api",
+        "org.apache.logging.log4j:log4j-core",
     ) { version { strictly("2.14.1") } } // Vulnerability to trigger dependency review
 }
 
