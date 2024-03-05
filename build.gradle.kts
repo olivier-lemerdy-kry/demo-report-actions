@@ -35,6 +35,9 @@ dependencies {
     runtimeOnly("com.h2database:h2")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.2.1")
+    testImplementation(
+        "org.apache.logging.log4j:log4j-core",
+    ) { version { strictly("2.14.1") } } // Vulnerability to trigger dependency review
 }
 
 spotless {
@@ -55,4 +58,16 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.test {
+    finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test) // tests are required to run before generating the report
+    reports {
+        html.required = true
+        xml.required = true
+    }
 }
