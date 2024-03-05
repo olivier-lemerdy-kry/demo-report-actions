@@ -66,4 +66,8 @@ tasks.test {
 
 tasks.jacocoTestReport {
     dependsOn(tasks.test) // tests are required to run before generating the report
+    reports {
+        html.required = true
+        xml.required = true
+    }
 }
