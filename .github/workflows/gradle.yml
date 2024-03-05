@@ -26,6 +26,8 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
       - uses: gradle/actions/setup-gradle@v3
+        with:
+          dependency-graph: generate-and-upload
 
       - run: ./gradlew build
 
