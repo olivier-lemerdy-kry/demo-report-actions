@@ -32,6 +32,7 @@ jobs:
 
   dependency-review:
     runs-on: ubuntu-latest
+    if: needs.pr-check.outputs.number != null # Only triggers on PR
     steps:
       - uses: actions/checkout@v4
       - uses: actions/dependency-review-action@v4
