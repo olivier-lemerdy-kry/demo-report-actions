@@ -32,11 +32,12 @@ jobs:
 
   dependency-review:
     runs-on: ubuntu-latest
+    needs: dependency-submission
     steps:
       - uses: actions/checkout@v4
       - run: echo ${{ github.ref }}
       - uses: actions/dependency-review-action@v4
-        if: ${{ startsWith(github.ref, 'refs/pulls') }}
+        if: ${{ startsWith(github.ref, 'refs/pull') }}
         with:
           comment-summary-in-pr: always
           retry-on-snapshot-warnings: true
